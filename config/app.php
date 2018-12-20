@@ -230,4 +230,6 @@ return [
     ],
 
     'order_ttl' => 1800,
+
+    'ngrok_url' => env('NGROK_URL'),  //内网穿透神器 ngrok临时分配的域名
 ];
