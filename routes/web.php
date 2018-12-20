@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/email_verify_notice', 'PagesController@emailVerifyNotice')->name('email_verify_notice');
     Route::get('/email_verification/verify', 'EmailVerificationController@verify')->name('email_verification.verify');
     Route::get('/email_verification/send', 'EmailVerificationController@send')->name('email_verification.send');
+
     Route::group(['middleware' => 'email_verified'], function() {
         Route::get('user_addresses', 'UserAddressesController@index')->name('user_addresses.index');
         Route::get('user_addresses/create', 'UserAddressesController@create')->name('user_addresses.create');
@@ -41,6 +42,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('orders/{order}/review', 'OrdersController@sendReview')->name('orders.review.store');
         Route::post('orders/{order}/apply_refund', 'OrdersController@applyRefund')->name('orders.apply_refund');
         Route::get('coupon_codes/{code}', 'CouponCodesController@show')->name('coupon_codes.show');
+
+        Route::post('crowdfunding_orders', 'OrdersController@crowdfunding')->name('crowdfunding_orders.store');  //众筹下单
     });
 });
 
