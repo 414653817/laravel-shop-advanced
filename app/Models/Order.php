@@ -31,7 +31,17 @@ class Order extends Model
         self::SHIP_STATUS_RECEIVED  => '已收货',
     ];
 
+    //订单类型是普通还是众筹
+    const TYPE_NORMAL = 'normal';
+    const TYPE_CROWDFUNDING = 'crowdfunding';
+
+    public static $typeMap = [
+        self::TYPE_NORMAL => '普通商品订单',
+        self::TYPE_CROWDFUNDING => '众筹商品订单',
+    ];
+
     protected $fillable = [
+        'type',
         'no',
         'address',
         'total_amount',
@@ -91,7 +101,7 @@ class Order extends Model
     {
         return $this->belongsTo(CouponCode::class);
     }
-    
+
     public static function findAvailableNo()
     {
         // 订单流水号前缀
