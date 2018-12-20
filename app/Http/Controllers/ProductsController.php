@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Exceptions\InvalidRequestException;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -10,6 +11,7 @@ use App\Models\Category;
 
 class ProductsController extends Controller
 {
+    // 使用 Laravel 的依赖注入，自动创建 $categoryService 对象
     public function index(Request $request)
     {
         // 创建一个查询构造器
@@ -67,6 +69,7 @@ class ProductsController extends Controller
             ],
             // 等价于 isset($category) ? $category : null
             'category' => $category ?? null,
+            
         ]);
     }
 
