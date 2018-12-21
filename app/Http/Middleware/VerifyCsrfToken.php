@@ -19,5 +19,7 @@ class VerifyCsrfToken extends Middleware
         //把支付宝后端回调的地址加入 CSRF Token 的白名单中
         'installments/alipay/notify',
         'installments/wechat/notify',
+        //微信退款回调
+        'installments/wechat/refund_notify',
     ];
 }
